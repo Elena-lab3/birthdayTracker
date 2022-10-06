@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  BirthdayTracker
 //
-//  Created by Алёнка on 23.12.21.
+//  Created by ElenaBarkovskaya on 23.12.21.
 //
 
 import UIKit
@@ -37,15 +37,15 @@ class AddBirthdayViewController: UIViewController {
             try context.save()
             let message = "Сегодня \(fN) \(lN) празднует 8 день рождения!"
             let content = UNMutableNotificationContent()
-                content.body = message
+            content.body = message
             content.sound = UNNotificationSound.default
             var dateComponents = Calendar.current.dateComponents([.month, .day], from: bD)
             dateComponents.hour = 8
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             if let identifier = newBirthday.birthdayId {
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-                   let center = UNUserNotificationCenter.current()
-                   center.add(request, withCompletionHandler: nil)
+                let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+                let center = UNUserNotificationCenter.current()
+                center.add(request, withCompletionHandler: nil)
             }
         } catch let error {
             print("Не удалось сохранить из-за ошибки \(error).")
